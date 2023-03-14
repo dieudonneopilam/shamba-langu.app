@@ -37,7 +37,7 @@ class _BottonBarState extends State<BottonBar> {
           height: 70,
           decoration: const BoxDecoration(
             border: Border(),
-            color: Color.fromARGB(255, 48, 87, 213),
+            color: Colors.blue,
             borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
@@ -48,7 +48,7 @@ class _BottonBarState extends State<BottonBar> {
             currentIndex: _selectIndex,
             selectedItemColor: Colors.amber[800],
             onTap: _onItemTapped,
-            backgroundColor: const Color.fromARGB(255, 48, 87, 213),
+            backgroundColor: Colors.blue,
             type: BottomNavigationBarType.fixed,
             elevation: 0,
             items: const [

@@ -14,7 +14,7 @@ class _PostsPageState extends State<PostsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 40, left: 10, right: 10),
+      margin: const EdgeInsets.only(top: 60, left: 10, right: 10),
       width: double.infinity,
       child: Column(
         children: [
@@ -64,15 +64,12 @@ class _PostsPageState extends State<PostsPage> {
                   child: Row(
                     children: [
                       Container(
-                        height: 100,
+                        height: 80,
                         width: 100,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(colors: [
-                            Colors.blue,
-                            Color.fromARGB(255, 28, 106, 170),
-                            Color.fromARGB(255, 115, 174, 222)
-                          ]),
-                          color: const Color.fromARGB(255, 186, 162, 162),
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/post.jpg'),
+                              fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -94,7 +91,6 @@ class _PostsPageState extends State<PostsPage> {
                                       'poste de choux fleur',
                                       style: TextStyle(fontSize: 18),
                                     ),
-                                    Text('Title'),
                                   ],
                                 ),
                               ),
@@ -143,19 +139,21 @@ class _PostsPageState extends State<PostsPage> {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    height: 40,
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 5),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.red),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: TextButton(
-                                      onPressed: () {},
-                                      child: const Text(
-                                        'supprimer',
-                                        style: TextStyle(color: Colors.red),
+                                  Expanded(
+                                    child: Container(
+                                      height: 40,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.red),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        child: const Text(
+                                          'supprimer',
+                                          style: TextStyle(color: Colors.red),
+                                        ),
                                       ),
                                     ),
                                   )

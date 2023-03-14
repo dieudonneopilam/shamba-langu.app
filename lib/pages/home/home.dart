@@ -11,22 +11,41 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 50),
+      padding: const EdgeInsets.only(top: 80, left: 20, right: 20, bottom: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+          const Text(
             'Shamba Langu',
             style: TextStyle(fontSize: 30),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text(
-            'une application aui vous permet de faire le control de toute chose à distance',
-            style: TextStyle(fontSize: 20),
+          const Center(
+            child: Text(
+              'une application aui vous permet de faire le control de toute chose à distance, exploiter plus de parametre',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ),
-          Text('data')
+          const SizedBox(
+            height: 100,
+          ),
+          Center(
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(200),
+                border: Border.all(color: Colors.grey),
+                image: const DecorationImage(
+                    image: AssetImage('assets/images/arroser.jfif'),
+                    fit: BoxFit.cover),
+              ),
+            ),
+          )
         ],
       ),
     );
