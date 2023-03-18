@@ -50,7 +50,7 @@ class _AddTankState extends State<AddTank> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                     ),
-                    label: Text('url'),
+                    label: Text('url Tank'),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -66,7 +66,7 @@ class _AddTankState extends State<AddTank> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(50))),
-                    label: Text('url read'),
+                    label: Text('url read Tank'),
                     contentPadding: const EdgeInsets.only(left: 20),
                   ),
                   validator: (value) {
@@ -84,7 +84,7 @@ class _AddTankState extends State<AddTank> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                     ),
-                    label: Text('url write'),
+                    label: Text('url write Tank'),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {

@@ -20,18 +20,19 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontSize: 30),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           const Center(
             child: Text(
               'une application aui vous permet de faire le control de toute chose à distance, exploiter plus de parametre',
+              textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
           ),
           const SizedBox(
-            height: 100,
+            height: 50,
           ),
           Center(
             child: Container(

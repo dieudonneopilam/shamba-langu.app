@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "586672149984",
+    "project_id": "shamba-langu-apk",
+    "storage_bucket": "shamba-langu-apk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586672149984:android:65453282d1423d874e4785",
+        "android_client_info": {
+          "package_name": "com.example.shamba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586672149984-fv8nj5l7fi03b348sd17oir7i8ji1hgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB47a0P9Go3Ar99gn3tVHbs_S2paTQ8U0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586672149984-7bbid3rjb4mjtjl6npcj2vmbdvfkgr3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

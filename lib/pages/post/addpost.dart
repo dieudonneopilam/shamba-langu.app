@@ -46,6 +46,15 @@ class _AddPostState extends State<AddPost> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const Center(
+                  child: Text(
+                    'Informations Post',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(

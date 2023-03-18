@@ -37,6 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   rive: ^0.10.2
   google_fonts: ^4.0.3
+  cloud_firestore: ^4.4.4
+  firebase_auth: ^4.2.10
+  firebase_core: ^2.7.1
+  firebase_database: ^10.0.15
+  firebase_storage: ^11.0.15
+  google_sign_in: ^6.0.2
   
 
 dev_dependencies:
