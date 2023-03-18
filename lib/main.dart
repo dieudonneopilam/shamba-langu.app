@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shamba/pages/accueil/accueil.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const MyApp());
 }
 
@@ -45,15 +47,13 @@ class _UserInformationState extends State<UserInformation> {
       stream: _usersStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Scaffold(
+          return const Scaffold(
             backgroundColor: Colors.amber,
           );
         }
-
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return const Text("Loading");
         }
-        print('object');
 
         return Container(
           color: Colors.red,
@@ -61,11 +61,10 @@ class _UserInformationState extends State<UserInformation> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
-              print('data => $data');
               return ListTile(
                 title: Text(
-                  data['name'],
-                  style: TextStyle(color: Colors.black),
+                  data['name'] + data.length.toString(),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 subtitle: Text(data['url']),
               );
