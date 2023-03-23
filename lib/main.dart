@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const MyApp());
 }
 
@@ -17,7 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        title: 'Shamba Langu', debugShowCheckedModeBanner: false, home: Page());
+        title: 'Shamba Langu',
+        debugShowCheckedModeBanner: false,
+        home: Accueil());
   }
 }
 

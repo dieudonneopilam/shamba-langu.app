@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddTank extends StatefulWidget {
@@ -9,6 +10,12 @@ class AddTank extends StatefulWidget {
 
 class _AddTankState extends State<AddTank> {
   final _key = GlobalKey<FormState>();
+
+  String name = '';
+  String url = '';
+  String urlread = '';
+  String urlwrite = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +24,7 @@ class _AddTankState extends State<AddTank> {
         toolbarHeight: 80,
         title: const Text(
           'New Tank',
-          style: TextStyle(color: Colors.green, fontSize: 20),
+          style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         leading: IconButton(
           onPressed: () {
@@ -50,6 +57,25 @@ class _AddTankState extends State<AddTank> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                     ),
+                    label: Text('name Tank'),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'veillez saisir name';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => name = value,
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
                     label: Text('url Tank'),
                   ),
                   validator: (value) {
@@ -58,6 +84,7 @@ class _AddTankState extends State<AddTank> {
                     }
                     return null;
                   },
+                  onChanged: (value) => url = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -75,6 +102,7 @@ class _AddTankState extends State<AddTank> {
                     }
                     return null;
                   },
+                  onChanged: (value) => urlread = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -92,7 +120,7 @@ class _AddTankState extends State<AddTank> {
                     }
                     return null;
                   },
-                  obscureText: true,
+                  onChanged: (value) => urlwrite = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -105,20 +133,42 @@ class _AddTankState extends State<AddTank> {
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(color: Colors.blue)),
                   child: TextButton(
-                      style: const ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(Colors.transparent),
-                      ),
-                      onPressed: () {
-                        if (_key.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('processing')));
-                        }
-                      },
-                      child: const Text(
-                        'ajouter',
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
-                      )),
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(Colors.transparent),
+                    ),
+                    onPressed: () {
+                      if (_key.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('processing')));
+                      }
+                      CollectionReference tanks =
+                          FirebaseFirestore.instance.collection('tanks');
+
+                      Future<void> addTank() {
+                        // Call the user's CollectionReference to add a new user
+                        return tanks
+                            .add({
+                              'name': name, // John Doe
+                              'url': url, // Stokes and Sons
+                              'urlread': urlread,
+                              'urlwrite': urlwrite
+                            })
+                            .then(
+                              (value) => Navigator.of(context).pop(),
+                            )
+                            .catchError(
+                              (error) => print("Failed to add user: $error"),
+                            );
+                      }
+
+                      addTank();
+                    },
+                    child: const Text(
+                      'ajouter',
+                      style: TextStyle(fontSize: 18, color: Colors.blue),
+                    ),
+                  ),
                 )
               ],
             ),

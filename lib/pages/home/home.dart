@@ -20,31 +20,40 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontSize: 30),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           const Center(
             child: Text(
               'une application aui vous permet de faire le control de toute chose à distance, exploiter plus de parametre',
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.justify,
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Center(
-            child: Container(
-              height: 200,
-              width: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(200),
-                border: Border.all(color: Colors.grey),
-                image: const DecorationImage(
-                    image: AssetImage('assets/images/arroser.jfif'),
-                    fit: BoxFit.cover),
-              ),
+            child: Column(
+              children: [
+                Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(200),
+                    border: Border.all(color: Colors.grey),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/images/arroser.jpg'),
+                        fit: BoxFit.cover),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  child: Image.asset('assets/images/gdsc.png'),
+                ),
+              ],
             ),
           )
         ],

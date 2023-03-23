@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// Import the firebase_core and cloud_firestore plugin
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AddPost extends StatefulWidget {
   const AddPost({super.key});
 
@@ -9,6 +13,11 @@ class AddPost extends StatefulWidget {
 
 class _AddPostState extends State<AddPost> {
   final _formKey = GlobalKey<FormState>();
+
+  String name = '';
+  String url = '';
+  String urlread = '';
+  String urlwrite = '';
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +69,24 @@ class _AddPostState extends State<AddPost> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                     ),
+                    label: Text('name'),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'veillez saisir name';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => name = value,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
                     label: Text('url'),
                   ),
                   validator: (value) {
@@ -68,6 +95,7 @@ class _AddPostState extends State<AddPost> {
                     }
                     return null;
                   },
+                  onChanged: (value) => url = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -85,6 +113,7 @@ class _AddPostState extends State<AddPost> {
                     }
                     return null;
                   },
+                  onChanged: (value) => urlread = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -102,7 +131,7 @@ class _AddPostState extends State<AddPost> {
                     }
                     return null;
                   },
-                  obscureText: true,
+                  onChanged: (value) => urlwrite = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -121,8 +150,29 @@ class _AddPostState extends State<AddPost> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('processing')));
+                          CollectionReference users =
+                              FirebaseFirestore.instance.collection('posts');
+
+                          Future<void> addUser() {
+                            // Call the user's CollectionReference to add a new user
+                            print('object');
+                            return users
+                                .add({
+                                  'name': name, // John Doe
+                                  'url': url, // Stokes and Sons
+                                  'urlread': urlread,
+                                  'urlwrite': urlwrite
+                                })
+                                .then(
+                                  (value) => Navigator.of(context).pop(),
+                                )
+                                .catchError(
+                                  (error) =>
+                                      print("Failed to add user: $error"),
+                                );
+                          }
+
+                          addUser();
                         }
                       },
                       child: const Text(
@@ -135,6 +185,43 @@ class _AddPostState extends State<AddPost> {
             key: _formKey,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AddPoste extends StatelessWidget {
+  final String name;
+  final String url;
+  final String urlread;
+  final String urlwrite;
+
+  const AddPoste(this.name, this.url, this.urlread, this.urlwrite, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Create a CollectionReference called users that references the firestore collection
+    CollectionReference users = FirebaseFirestore.instance.collection('posts');
+
+    Future<void> addUser() {
+      // Call the user's CollectionReference to add a new user
+      return users
+          .add({
+            'name': name, // John Doe
+            'url': url, // Stokes and Sons
+            'urlread': urlread,
+            'urlwrite': urlwrite
+          })
+          .then((value) => print("Poste Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    }
+
+    addUser();
+
+    return TextButton(
+      onPressed: addUser,
+      child: Text(
+        "Add User",
       ),
     );
   }
