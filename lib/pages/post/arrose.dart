@@ -138,8 +138,8 @@ class _ArrosePageState extends State<ArrosePage> {
                                           .collection('posts')
                                           .doc(data.document)
                                           .get();
-                                  final String field = doc.get('field');
-                                  final String fieldtank = doc.get('fieldtank');
+                                  // final String field = doc.get('field');
+                                  // final String fieldtank = doc.get('fieldtank');
                                   final String urlwrite = doc.get('urlwrite');
                                   final String urlreadtank =
                                       doc.get('urlreadtank');

@@ -10,9 +10,11 @@ import 'package:shamba/pages/post/post.dart';
 import 'package:shamba/pages/profil/profil.dart';
 import 'package:shamba/pages/tank/tank.dart';
 
+import 'firebase_options.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
