@@ -15,47 +15,51 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Shamba Langu',
-            style: TextStyle(fontSize: 30),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Center(
-            child: Text(
-              'une application aui vous permet de faire le control de toute chose à distance, exploiter plus de parametre',
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
           Center(
             child: Column(
               children: [
                 Container(
-                  height: 150,
-                  width: 150,
+                  height: 200,
+                  width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(200),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey),
                     image: const DecorationImage(
                         image: AssetImage('assets/images/arroser.jpg'),
                         fit: BoxFit.cover),
                   ),
                 ),
+                // ignore: sized_box_for_whitespace
                 Container(
                   width: double.infinity,
-                  height: 150,
-                  child: Image.asset('assets/images/gdsc.png'),
+                  height: 100,
+                  child: Image.asset(
+                    'assets/images/gdsc.png',
+                    fit: BoxFit.cover,
+                    height: 50,
+                  ),
                 ),
               ],
             ),
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color.fromARGB(255, 241, 241, 241)),
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 5),
+            child: const Text(
+              'une application aui vous permet de faire le control de toute chose à distance, exploiter plus de parametre',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.justify,
+            ),
+          ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shamba/pages/post/addpost.dart';
 import 'package:shamba/pages/post/arrose.dart';
@@ -116,7 +116,7 @@ class _PostsPageState extends State<PostsPage> {
                                       children: [
                                         Text(
                                           data['name'],
-                                          style: TextStyle(fontSize: 18),
+                                          style: const TextStyle(fontSize: 18),
                                         ),
                                       ],
                                     ),
@@ -136,12 +136,21 @@ class _PostsPageState extends State<PostsPage> {
                                                   BorderRadius.circular(20)),
                                           child: TextButton(
                                             onPressed: () {
-                                              print(data['name']);
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ArrosePage(),
-                                              ));
+                                              Navigator.pushNamed(
+                                                  context, '/arroser',
+                                                  arguments: Arguments(
+                                                      field: data['field'],
+                                                      document: document.id,
+                                                      name: data['name'],
+                                                      urlread: data['urlread'],
+                                                      urlwrite:
+                                                          data['urlwrite'],
+                                                      urlWriteTankTotalCm: data[
+                                                          'urlWriteTankTotalCm'],
+                                                      urlWriteTankTotalLitre: data[
+                                                          'urlWriteTankTotalLitre'],
+                                                      urlreadtank:
+                                                          data['urlreadtank']));
                                             },
                                             child: const Text(
                                               'arroser',
@@ -164,11 +173,23 @@ class _PostsPageState extends State<PostsPage> {
                                           ),
                                           child: TextButton(
                                             onPressed: () {
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EditPost(),
-                                              ));
+                                              Navigator.pushNamed(
+                                                context,
+                                                '/editpost',
+                                                arguments: Arguments(
+                                                  field: data['field'],
+                                                  document: document.id,
+                                                  name: data['name'],
+                                                  urlread: data['urlread'],
+                                                  urlwrite: data['urlwrite'],
+                                                  urlWriteTankTotalCm: data[
+                                                      'urlWriteTankTotalCm'],
+                                                  urlWriteTankTotalLitre: data[
+                                                      'urlWriteTankTotalLitre'],
+                                                  urlreadtank:
+                                                      data['urlreadtank'],
+                                                ),
+                                              );
                                             },
                                             child: const Text(
                                               'modifier',

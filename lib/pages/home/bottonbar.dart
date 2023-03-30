@@ -19,7 +19,7 @@ class _BottonBarState extends State<BottonBar> {
     });
   }
 
-  List<Widget> ListPages = <Widget>[
+  List<Widget> listPages = <Widget>[
     const HomePage(),
     const PostsPage(),
     const Tankspage(),
@@ -31,7 +31,7 @@ class _BottonBarState extends State<BottonBar> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: ListPages[_selectIndex],
+          child: listPages[_selectIndex],
         ),
         bottomNavigationBar: Container(
           height: 70,
@@ -64,7 +64,7 @@ class _BottonBarState extends State<BottonBar> {
               ),
               BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.home,
+                    Icons.podcasts,
                     color: Colors.white,
                     size: 25,
                   ),
@@ -73,14 +73,14 @@ class _BottonBarState extends State<BottonBar> {
                   activeIcon: Icon(Icons.abc),
                   tooltip: 'ok',
                   icon: Icon(
-                    Icons.home,
+                    Icons.tab,
                     color: Colors.white,
                     size: 25,
                   ),
                   label: 'tank'),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.account_box,
+                  Icons.account_circle,
                   color: Colors.white,
                   size: 25,
                 ),

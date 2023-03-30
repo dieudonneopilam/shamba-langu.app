@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Import the firebase_core and cloud_firestore plugin
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddPost extends StatefulWidget {
@@ -15,9 +15,12 @@ class _AddPostState extends State<AddPost> {
   final _formKey = GlobalKey<FormState>();
 
   String name = '';
-  String url = '';
+  String field = '';
   String urlread = '';
   String urlwrite = '';
+  String urlreadtank = '';
+  String urlWriteTankTotalLitre = '';
+  String urlWriteTankTotalCm = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,7 @@ class _AddPostState extends State<AddPost> {
             size: 30,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         centerTitle: true,
       ),
@@ -87,15 +90,15 @@ class _AddPostState extends State<AddPost> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                     ),
-                    label: Text('url'),
+                    label: Text('field'),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'veillez saisir url';
+                      return 'veillez saisir le field';
                     }
                     return null;
                   },
-                  onChanged: (value) => url = value,
+                  onChanged: (value) => field = value,
                 ),
                 const SizedBox(
                   height: 20,
@@ -105,7 +108,7 @@ class _AddPostState extends State<AddPost> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(50))),
                     label: Text('url read'),
-                    contentPadding: const EdgeInsets.only(left: 20),
+                    contentPadding: EdgeInsets.only(left: 20),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -136,6 +139,60 @@ class _AddPostState extends State<AddPost> {
                 const SizedBox(
                   height: 20,
                 ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    label: Text('url tank value'),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'veillez saisir url write';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => urlwrite = value,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    label: Text('url write tank total cm value'),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'veillez saisir url write';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => urlwrite = value,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    label: Text('url tank value'),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'veillez saisir url write';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => urlwrite = value,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 // ignore:, avoid_unnecessary_containers
                 Container(
                   margin: const EdgeInsets.only(bottom: 10),
@@ -150,16 +207,16 @@ class _AddPostState extends State<AddPost> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          CollectionReference users =
+                          CollectionReference posts =
                               FirebaseFirestore.instance.collection('posts');
 
-                          Future<void> addUser() {
+                          Future<void> addPost() {
                             // Call the user's CollectionReference to add a new user
-                            print('object');
-                            return users
+                            // print('object');
+                            return posts
                                 .add({
                                   'name': name, // John Doe
-                                  'url': url, // Stokes and Sons
+                                  'field': field, // Stokes and Sons
                                   'urlread': urlread,
                                   'urlwrite': urlwrite
                                 })
@@ -168,11 +225,12 @@ class _AddPostState extends State<AddPost> {
                                 )
                                 .catchError(
                                   (error) =>
+                                      // ignore: avoid_print
                                       print("Failed to add user: $error"),
                                 );
                           }
 
-                          addUser();
+                          addPost();
                         }
                       },
                       child: const Text(
@@ -185,43 +243,6 @@ class _AddPostState extends State<AddPost> {
             key: _formKey,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class AddPoste extends StatelessWidget {
-  final String name;
-  final String url;
-  final String urlread;
-  final String urlwrite;
-
-  const AddPoste(this.name, this.url, this.urlread, this.urlwrite, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Create a CollectionReference called users that references the firestore collection
-    CollectionReference users = FirebaseFirestore.instance.collection('posts');
-
-    Future<void> addUser() {
-      // Call the user's CollectionReference to add a new user
-      return users
-          .add({
-            'name': name, // John Doe
-            'url': url, // Stokes and Sons
-            'urlread': urlread,
-            'urlwrite': urlwrite
-          })
-          .then((value) => print("Poste Added"))
-          .catchError((error) => print("Failed to add user: $error"));
-    }
-
-    addUser();
-
-    return TextButton(
-      onPressed: addUser,
-      child: Text(
-        "Add User",
       ),
     );
   }

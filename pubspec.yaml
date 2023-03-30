@@ -44,6 +44,7 @@ dependencies:
   firebase_storage: ^11.0.15
   google_sign_in: ^6.0.2
   adaptive_theme: ^3.2.0
+  http: ^0.13.5
   
 
 dev_dependencies:

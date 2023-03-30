@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamba/pages/home/bottonbar.dart';
-import 'package:shamba/pages/home/home.dart';
+// import 'package:shamba/pages/home/home.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
@@ -72,7 +72,7 @@ class _AccueilState extends State<Accueil> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => BottonBar(),
+                          builder: (context) => const BottonBar(),
                         ));
                       },
                       child: const Text(
