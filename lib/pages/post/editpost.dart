@@ -11,6 +11,9 @@ class Arguments {
     required this.urlWriteTankTotalLitre,
     required this.urlWriteTankTotalCm,
     required this.urlreadtank,
+    required this.valuetank,
+    required this.ValueurlWriteTankTotalCm,
+    required this.ValueurlWriteTankTotalLitre,
   });
 
   final String document;
@@ -21,6 +24,9 @@ class Arguments {
   final String urlWriteTankTotalLitre;
   final String urlWriteTankTotalCm;
   final String urlreadtank;
+  final String valuetank;
+  final String ValueurlWriteTankTotalLitre;
+  final String ValueurlWriteTankTotalCm;
 }
 
 class EditPost extends StatefulWidget {

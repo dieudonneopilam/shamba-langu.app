@@ -11,56 +11,81 @@ class _ProfilState extends State<Profil> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 500,
-        padding: const EdgeInsets.only(top: 100, left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
         // ignore: avoid_unnecessary_containers
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              'Community Team',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             Column(
-              children: const [
+              children: [
                 Center(
-                  child: CircleAvatar(
-                    radius: 100,
-                    backgroundImage: AssetImage(
-                      'assets/images/a2.jfif',
+                  child: Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      image: DecorationImage(
+                          alignment: Alignment.topCenter,
+                          image: AssetImage(
+                            'assets/images/gdsc4.jpg',
+                          ),
+                          fit: BoxFit.cover),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  'Dieudonné Ngwangwa',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )
+                Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      image: DecorationImage(
+                          alignment: Alignment.topCenter,
+                          image: AssetImage(
+                            'assets/images/gdsc2.jpg',
+                          ),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      image: DecorationImage(
+                          alignment: Alignment.topCenter,
+                          image: AssetImage(
+                            'assets/images/gdsc3.jpg',
+                          ),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
-            Container(
-              width: 200,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                gradient: LinearGradient(
-                  begin: Alignment.bottomLeft,
-                  colors: [
-                    Colors.red.withOpacity(.6),
-                    Colors.red.withOpacity(.4),
-                  ],
-                ),
-              ),
-              child: Center(
-                  child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Logout',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              )),
-            )
           ],
         ));
   }

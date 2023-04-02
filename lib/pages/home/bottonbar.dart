@@ -22,17 +22,18 @@ class _BottonBarState extends State<BottonBar> {
   List<Widget> listPages = <Widget>[
     const HomePage(),
     const PostsPage(),
-    const Tankspage(),
     const Profil(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         body: SingleChildScrollView(
+            child: Container(
+          height: MediaQuery.of(context).size.height * 1,
           child: listPages[_selectIndex],
-        ),
+        )),
         bottomNavigationBar: Container(
           height: 70,
           decoration: const BoxDecoration(
@@ -69,15 +70,6 @@ class _BottonBarState extends State<BottonBar> {
                     size: 25,
                   ),
                   label: 'post'),
-              BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.abc),
-                  tooltip: 'ok',
-                  icon: Icon(
-                    Icons.tab,
-                    color: Colors.white,
-                    size: 25,
-                  ),
-                  label: 'tank'),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_circle,
